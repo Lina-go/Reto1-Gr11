@@ -30,6 +30,8 @@ El controlador se encarga de mediar entre la vista y el modelo.
 """
 
 # Inicialización del Catálogo de videos
+
+
 def initCatalog(tipo):
     """
     Llama la funcion de inicializacion del catalogo del modelo.
@@ -71,6 +73,7 @@ def loadCategory_ID(catalog):
 
 # Función de ordenamiento
 
+
 def sortvideos(catalog, size):
     return model.sortvideos(catalog, size)
 
@@ -79,3 +82,7 @@ def sort_type(catalog, size, type):
     return model.sort_type(catalog, size, type)
 
 # Funciones de consulta sobre el catálogo
+
+
+def getVideosByViews(catalog, category_name, country, size_lt):
+    return model.getVideosByViews(catalog, category_name, country, size_lt)

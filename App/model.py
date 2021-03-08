@@ -51,26 +51,12 @@ def newCatalog(tipo):
     generos y videos. Retorna el catalogo inicializado.
     """
     catalog = {'videos': None,
-               'category': None,
-               "title": None,
-               "channel_title": None,
-               "trending_date": None,
-               "country": None,
-               "views": None,
-               "likes": None,
-               "dislikes": None
+               'category': None
                }
 
     catalog['videos'] = lt.newList(tipo)
     catalog['category'] = lt.newList(tipo,
                                      cmpfunction=cmpVideosById),
-    catalog["title"] = lt.newList(tipo),
-    catalog["channel_title"] = lt.newList(tipo),
-    catalog["trending_date"] = lt.newList(tipo),
-    catalog["country"] = lt.newList(tipo),
-    catalog["views"] = lt.newList(tipo),
-    catalog["likes"] = lt.newList(tipo),
-    catalog["dislikes"] = lt.newList(tipo)
 
     return catalog
 
@@ -102,8 +88,8 @@ def addCategory(catalog, video_ctg):
     """
     Adiciona un tag a la lista de tags
     """
-    t = newCategory(video_ctg['name'], video_ctg['id'])
-    lt.addLast(catalog['category'], t)
+    c = newCategory(video_ctg['name'], video_ctg['id'])
+    lt.addLast(catalog['category'], c)
 
 
 # Funciones para la creación de Datos
@@ -119,13 +105,13 @@ def newAuthor(name):
     return channel_titlee
 
 
-def newCategory(id, name):
+def newCategory(c_name, c_id):
     """
     Esta estructura almancena los tags utilizados para marcar libros.
     """
     video_ctg = {'name': '', 'id': ''}
-    video_ctg['name'] = name
-    video_ctg['tag_id'] = id
+    video_ctg['name'] = c_name
+    video_ctg['id'] = int(c_id)
     return video_ctg
 
 # Funciones de comparación
@@ -190,6 +176,15 @@ def sort_type(catalog, size, type):
 def getVideosByViews(catalog, category_name, country, size_lt):
     """
     Retorna el trending_date, title, channel_title, publish_time, views, likes, dislikes
-    de acuerdo a un category_name, country, número de videos que se quieren listar. 
+    de acuerdo a un category_name, country, número de videos que se quieren listar.
+    Este es el requerimiento 1
+    """
+    pass
+
+
+def getVideosbyDays(catalog, country):
+    """
+    Retorna title, cannel_title, country, número de días
+    Este es el req 2
     """
     pass

@@ -60,6 +60,19 @@ def loadData(catalog):
     """
     controller.loadData(catalog)
 
+# Funciones print
+
+
+def printFirstVideo(video):
+
+    print("Title:" + video["title"],
+          "Channel Title:" + video["channel_title"],
+          "Trending Date:" + video["country"],
+          "Country:" + video["country"],
+          "Views:" + video["views"],
+          "Likes:" + video["likes"],
+          "Dislikes:" + video["dislikes"])
+
 
 def printResults(ord_videos, sample=10):
     size = lt.size(ord_videos)
@@ -97,7 +110,12 @@ while True:
 
         catalog = initCatalog(tipo)
         loadData(catalog)
+
         print("Videos cargados:" + str(lt.size(catalog["videos"])))
+        print("Categorias cargadas:" + str(lt.size(catalog["category"])))
+
+        print("Primer video cargado: " +
+              printFirstVideo(lt.firstElement(catalog["videos"])))
 
     elif int(inputs[0]) == 2:
         tipo = "ARRAY_LIST"
@@ -106,9 +124,11 @@ while True:
 
         opcion = int(input(
             "Elija el tipo de ordenamiento que quiere \n 1. selection \n 2. insertion \n 3. shell \n 4. mergesort \n 5. quicksort "))
-        size_lt = int(input("Indique el número de datos: "))
+
         category_name = input("Ingrese la categoría que le gustaría consultar")
         country = input("Ingrese el país que le gustaría consultar")
+        size_lt = int(input("Indique el número de datos: "))
+        controller.getVideosByViews(catalog, category_name, country, size_lt)
 
         if int(opcion) == 2:
             tipo = "insertionsort"
