@@ -123,7 +123,7 @@ def newCategory(id, name):
     """
     Esta estructura almancena los tags utilizados para marcar libros.
     """
-    video_ctg = {'name': '', 'tag_id': ''}
+    video_ctg = {'name': '', 'id': ''}
     video_ctg['name'] = name
     video_ctg['tag_id'] = id
     return video_ctg
@@ -183,3 +183,13 @@ def sort_type(catalog, size, type):
     stop_time = time.process_time()
     elapsed_time_mseg = (stop_time - start_time)*1000
     return elapsed_time_mseg, sorted_list
+
+# Funciones de Consulta
+
+
+def getVideosByViews(catalog, category_name, country, size_lt):
+    """
+    Retorna el trending_date, title, channel_title, publish_time, views, likes, dislikes
+    de acuerdo a un category_name, country, número de videos que se quieren listar. 
+    """
+    pass

@@ -107,6 +107,8 @@ while True:
         opcion = int(input(
             "Elija el tipo de ordenamiento que quiere \n 1. selection \n 2. insertion \n 3. shell \n 4. mergesort \n 5. quicksort "))
         size_lt = int(input("Indique el número de datos: "))
+        category_name = input("Ingrese la categoría que le gustaría consultar")
+        country = input("Ingrese el país que le gustaría consultar")
 
         if int(opcion) == 2:
             tipo = "insertionsort"
@@ -128,7 +130,7 @@ while True:
         print("Tiempo transcurrido: ", answer[0], " ms")
 
     elif int(inputs[0]) == 3:
-        pass
+        country = input("Ingrese el país que le gustaría consultar")
     elif int(inputs[0]) == 4:
         pass
     elif int(inputs[0]) == 5:
