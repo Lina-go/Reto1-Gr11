@@ -52,11 +52,25 @@ def newCatalog(tipo):
     """
     catalog = {'videos': None,
                'category': None,
+               "title": None,
+               "channel_title": None,
+               "trending_date": None,
+               "country": None,
+               "views": None,
+               "likes": None,
+               "dislikes": None
                }
 
     catalog['videos'] = lt.newList(tipo)
     catalog['category'] = lt.newList(tipo,
-                                     cmpfunction=cmpVideosById)
+                                     cmpfunction=cmpVideosById),
+    catalog["title"] = lt.newList(tipo),
+    catalog["channel_title"] = lt.newList(tipo),
+    catalog["trending_date"] = lt.newList(tipo),
+    catalog["country"] = lt.newList(tipo),
+    catalog["views"] = lt.newList(tipo),
+    catalog["likes"] = lt.newList(tipo),
+    catalog["dislikes"] = lt.newList(tipo)
 
     return catalog
 
@@ -84,6 +98,16 @@ def addVideoYoutuber(catalog, authorname, videos):
     lt.addLast(channel_titlee['videos'], videos)
 
 
+def addCategory(catalog, video_ctg):
+    """
+    Adiciona un tag a la lista de tags
+    """
+    t = newCategory(video_ctg['name'], video_ctg['id'])
+    lt.addLast(catalog['category'], t)
+
+
+# Funciones para la creación de Datos
+
 def newAuthor(name):
     """
     Crea una nueva estructura para modelar los videos de
@@ -93,6 +117,16 @@ def newAuthor(name):
     channel_titlee['name'] = name
     channel_titlee['videos'] = lt.newList('ARRAY_LIST')
     return channel_titlee
+
+
+def newCategory(id, name):
+    """
+    Esta estructura almancena los tags utilizados para marcar libros.
+    """
+    video_ctg = {'name': '', 'tag_id': ''}
+    video_ctg['name'] = name
+    video_ctg['tag_id'] = id
+    return video_ctg
 
 # Funciones de comparación
 
@@ -110,7 +144,13 @@ def cmpVideosById(video_1, video_2):
         return 1
 
 
+def comparecountry(country_1, country):
+    if (country_1.lower() in country['country'].lower()):
+        return 0
+    return -1
+
 #category_id, videos_id
+
 
 # Funciones para sort
 

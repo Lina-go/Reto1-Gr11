@@ -68,7 +68,8 @@ def printResults(ord_videos, sample=10):
         i = 0
         while i <= sample:
             video = lt.getElement(ord_videos, i)
-            print("Titulo: " + video["channel_title"])
+            print("Titulo: " + video["channel_title"]
+                  )
             i += 1
 
 
